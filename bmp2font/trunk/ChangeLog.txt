@@ -1,0 +1,23 @@
+Change Log
+----------
+
+  bmp2font V1.00 (20091212)
+  
+   - Generates complete class for the font in .cpp and .h files.
+   - Automatically determines background colour from top-left pixel if not set
+     via command line arguments.
+   - Font dimensions can be passed in via command line or determined from bitmap
+     dimensions.
+   - Renamed from "FontBitPacker" to "bmp2font" and adjusted version
+     number back to 1.00.
+   - Can convert to PackedFont1, PackedFont16, Font and MonoFont formats.
+   - Converted from VS2005 to VS2008.
+
+  FontBitPacker V2.00 (20080312)
+  
+   - Fixed bitpacking order to follow sensible direction.
+   - Replaced PAGfx output parsing with BMP loader.
+   
+  FontBitPacker V1.00 (20080311)
+  
+   - First release.
