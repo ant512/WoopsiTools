@@ -68,11 +68,12 @@ namespace Woopsi.Bmp2Font.Fonts
 				mFont.ClassName.ToLower(), mBitmap.Width, mBitmap.Height));
 
 			// Append font constructor
-			mOutputCPP.Append(String.Format("{0}::{0}() : Font({1}_Bitmap, {2}, {3})",
+			mOutputCPP.Append(String.Format("{0}::{0}() : Font({1}_bitmapWrapper, {2}, {3}, {4})",
 				mFont.ClassName,
 				mFont.ClassName.ToLower(),
 				mFont.Width.ToString(),
-				mFont.Height.ToString()));
+				mFont.Height.ToString(),
+				ColorToRGBA16(mBackgroundColour).ToString()));
 
 			mOutputCPP.Append(" { };");
 
