@@ -1,4 +1,4 @@
-* Copyright (c) 2008-2010, Antony Dzeryn
+* Copyright (c) 2009-2010, Antony Dzeryn
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -22,3 +22,40 @@
 * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+  
+bmp2bitmap
+----------
+
+  bmp2bitmap is a utility designed to convert BMP files into Woopsi-compatible
+  C++ classes.  These classes can then be embedded into NDS ROM files, removing
+  the need to load the BMP files from disk or manually wrap the raw bitmap data
+  in a struct describing the original bitmap.
+
+  
+Usage
+-----
+
+  bmp2bitmap is a command line tool.  To use it, open a DOS prompt and type:
+  
+
+
+
+Requirements
+------------
+
+  To run the utility you will need Windows and the .NET3.5 redistributable.  To
+  compile the sourcecode you need Visual Studio 2008.
+   
+
+Links
+-----
+
+ - http://ant.simianzombie.com                    - My main site
+ - http://www.sourceforge.net/projects/woopsi     - Woopsi SourceForge page
+
+
+Email
+-----
+
+  Contact me at spam_mail250@yahoo.com.
