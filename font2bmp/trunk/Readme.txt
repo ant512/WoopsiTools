@@ -1,4 +1,4 @@
-* Copyright (c) 2008-2010, Antony Dzeryn
+* Copyright (c) 2009-2010, Antony Dzeryn
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -8,7 +8,7 @@
 *     * Redistributions in binary form must reproduce the above copyright
 *       notice, this list of conditions and the following disclaimer in the
 *       documentation and/or other materials provided with the distribution.
-*     * Neither the names "bmp2font", "Woopsi", "Simian Zombie" nor the
+*     * Neither the names "font2bmp", "Woopsi", "Simian Zombie" nor the
 *       names of its contributors may be used to endorse or promote products
 *       derived from this software without specific prior written permission.
 *
@@ -24,46 +24,46 @@
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
   
-bmp2font
+font2bmp
 --------
 
-  bmp2font is a utility designed to convert BMP files containing font glyphs
-  into Woopsi-compatible C++ classes.  It can convert files to Font, MonoFont,
-  PackedFont1 and PackedFont16 classes.
+  font2bmp is a utility designed to convert Windows fonts into a BMP file.  The
+  BMP will contain the standard ASCII set laid out in a regular grid of 8 rows
+  by 32 columns.  The bitmap can be converted to a Woopsi font class by using
+  the bmp2font program.  Alternatively, that step can be omitted by using the
+  font2font program, which will convert straight from a Windows font to a Woopsi
+  font class.
 
-  
+
 Usage
 -----
 
-  bmp2font is a command line tool.  To use it, open a DOS prompt and type:
+  font2bmp is a command line tool.  To use it, open a DOS prompt and type:
   
-  bmp2font /infile <in> /classname <class> /fonttype /r <red> /g <green> /b
-  <blue> /width <width> /height <height>
+  font2bmp /font <font> /size <size> /style <style> /file <file> /backr <backr>
+  /backg <backg> /backb <backb> /textr <textr> /textg <textg> /textb <textb>
+  /list
   
-  Replace the text in brackets like this:
-
-   - infile     - This should be the full path and filename for the BMP file.
-   - classname  - This is the name of the class to be create.  The resultant
-                  file with have the same name, albeit in lower-case.
-   - fonttype   - Type of font to produce.  Options are monofont, font,
-                  packedfont1 and packedfont16.
-   - r          - This is the red component of the background colour used in the
-                  font.  This will be made transparent.
-   - g          - This is the green component of the background colour used in
-                  the font.  This will be made transparent.
-   - b          - This is the blue component of the background colour used in the
-                  font.  This will be made transparent.
-   - width      - This is the width of a single character in the font.
-   - height     - This is the height of a single character in the font.
-
-  If the RGB background colour is not specified, the utility uses the top-left
-  pixel of the bitmap instead.
+   - font       - The name of the font to convert.
+   - size       - The size of the font, in pixels.
+   - style      - The style of the font, which can be either regular, bold or
+                  italic.
+   - file       - The output file and path.
+   - backr      - The red component of the background colour.
+   - backg      - The green component of the background colour.
+   - backb      - The blue component of the background colour.
+   - textr      - The red component of the text colour.
+   - textb      - The blue component of the text colour.
+   - textg      - The green component of the text colour.
   
-  If the width and height of the font are not specified, the utility bases its
-  dimensions on the width and height of the bitmap.  In this situation, the
-  bitmap must be 32 characters wide and 8 characters tall.  Not all glyphs need
-  to be present in the bitmap.
+  The "list" option overrides all others.  If set, this option causes the
+  program to print a list of all available Windows font names, which can be used
+  as the parameter for the "font" option.
 
+  If no background colour is specified, or the colour is partially specified,
+  it defaults to white.  If the text colour is not specified it defaults to
+  black.  If the style is not specified it defaults to regular.
+   
 
 Requirements
 ------------
