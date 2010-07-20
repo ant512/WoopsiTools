@@ -32,8 +32,7 @@ namespace Woopsi.Bmp2Font
 		/// </summary>
 		/// <param name="className">The C++ classname for the font.</param>
 		/// <param name="bitmapName">The name for the u16 array that stores the font bitmap data.</param>
-		/// <param name="fontType">The type of font to produce.  Options are packedfont1, packedfont16,
-		/// monofont and font.</param>
+		/// <param name="fontType">The type of font to produce.  Options are packedfont1 and packedfont16.</param>
 		/// <param name="bitmap">The bitmap to convert.</param>
 		/// <param name="fontWidth">The width of a glyph in the font.  If set to -1, the width is calculated
 		/// from the width of the bitmap.  In that case, the bitmap must be a multiple of 32 wide.</param>
@@ -62,12 +61,6 @@ namespace Woopsi.Bmp2Font
 					break;
 				case "packedfont1":
 					converter = new PackedFonts.PackedFontConverter(font, bitmap, backgroundColour,  true);
-					break;
-				case "monofont":
-					converter = new MonoFonts.MonoFontConverter(font, bitmap, backgroundColour);
-					break;
-				case "font":
-					converter = new Fonts.FontConverter(font, bitmap, backgroundColour);
 					break;
 			}
 

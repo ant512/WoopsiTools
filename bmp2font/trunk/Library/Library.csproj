@@ -48,8 +48,6 @@
   <ItemGroup>
     <Compile Include="WoopsiFont.cs" />
     <Compile Include="FontConverterBase.cs" />
-    <Compile Include="Fonts\FontConverter.cs" />
-    <Compile Include="MonoFonts\MonoFontConverter.cs" />
     <Compile Include="PackedFonts\CharacterBitmap.cs" />
     <Compile Include="PackedFonts\PackedFontConverter.cs" />
     <Compile Include="Converter.cs" />

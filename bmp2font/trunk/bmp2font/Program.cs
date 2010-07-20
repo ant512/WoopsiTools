@@ -11,7 +11,7 @@ namespace Bmp2FontApp
 	{
 		#region Constants
 
-		const string APP_VERSION = "V1.0";
+		const string APP_VERSION = "V1.1";
 		const string APP_NAME = "bmp2font";
 		const int CHARS_PER_ROW = 32;
 		const int ROWS_PER_FONT = 8;
@@ -155,8 +155,6 @@ namespace Bmp2FontApp
 			Console.WriteLine("");
 			Console.WriteLine("                 packedfont1  - Monochrome packed proportional font");
 			Console.WriteLine("                 packedfont16 - 16-bit packed proportional font");
-			Console.WriteLine("                 font         - 16-bit fixed width font");
-			Console.WriteLine("                 monofont     - Monochrome packed fixed width font");
 			Console.WriteLine("");
 			Console.WriteLine("/WIDTH         Width of a single character in the font");
 			Console.WriteLine("/HEIGHT        Height of a single character in the font");

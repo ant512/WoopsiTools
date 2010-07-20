@@ -5,6 +5,7 @@ Change Log
   
    - Short count passed to PackedFont1 constructor contains correct value.
    - Fixed assembly information.
+   - Removed support for generating Font and MonoFont classes.
 
   bmp2font V1.00 (20091212)
   
