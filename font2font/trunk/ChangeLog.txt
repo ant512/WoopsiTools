@@ -1,6 +1,10 @@
 Change Log
 ----------
+ 
+ V1.1
+ 
+  - Upgraded to latest bmp2font library.
 
  V1.00
  
-    - First release.
+  - First release.
