@@ -289,9 +289,12 @@ namespace Woopsi.Bmp2Font.PackedFonts
 		{
 			int shortCount = 0;
 
-			foreach (CharacterBitmap item in mCharacters)
+			CharacterBitmap character;
+
+			for (int i = mFirstChar; i <= mLastChar; ++i)
 			{
-				shortCount += (item.Data.Count);
+				character = mCharacters[i];
+				shortCount += (character.Data.Count);
 			}
 
 			return shortCount;

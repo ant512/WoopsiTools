@@ -1,6 +1,11 @@
 Change Log
 ----------
 
+  V1.1 (20100720)
+  
+   - Short count passed to PackedFont1 constructor contains correct value.
+   - Fixed assembly information.
+
   bmp2font V1.00 (20091212)
   
    - Generates complete class for the font in .cpp and .h files.
