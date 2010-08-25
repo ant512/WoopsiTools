@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Text;
 
-namespace Woopsi.Font2Bmp
+namespace Font2Bmp.Library
 {
 	/// <summary>
 	/// Creates a bitmap from a Windows font.

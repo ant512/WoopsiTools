@@ -50,9 +50,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Library\Library.csproj">
+    <ProjectReference Include="..\font2bmp.Library\font2bmp.Library.csproj">
       <Project>{1F6C64BD-58C3-4BBE-ADF1-FABCC9DA036A}</Project>
-      <Name>Library</Name>
+      <Name>font2bmp.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Drawing.Text;
-using Woopsi.Font2Bmp;
+using Font2Bmp.Library;
 
 namespace Font2BitmapApp
 {
