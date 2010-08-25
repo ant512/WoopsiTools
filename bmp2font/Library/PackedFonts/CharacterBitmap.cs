@@ -13,6 +13,12 @@ namespace Woopsi.Bmp2Font.PackedFonts
 			set;
 		}
 
+		public int CharTop
+		{
+			get;
+			set;
+		}
+
 		public List<int> Data
 		{
 			get;

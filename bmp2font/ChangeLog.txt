@@ -1,6 +1,11 @@
 Change Log
 ----------
 
+  V1.2
+  
+   - Added char top information to fonts.
+   - Fixed assembly information (again).
+
   V1.1 (20100720)
   
    - Short count passed to PackedFont1 constructor contains correct value.

@@ -112,6 +112,7 @@ namespace Woopsi.Bmp2Font.PackedFonts
 				// Create a new character object to store this character
 				character = new CharacterBitmap();
 				character.Width = 0;
+				character.CharTop = 0;
 				gotData = false;
 
 				// Loop through all pixels in this character's bitmap
@@ -138,6 +139,12 @@ namespace Woopsi.Bmp2Font.PackedFonts
 								// Is this the largest width yet seen?
 								if (character.Width > mMaximumObservedWidth) mMaximumObservedWidth = character.Width;
 							}
+
+							// Update the chartop of this character
+							if (y > character.CharTop)
+							{
+								character.CharTop = y;
+							}
 						}
 						else
 						{
@@ -146,6 +153,9 @@ namespace Woopsi.Bmp2Font.PackedFonts
 						}
 					}
 				}
+
+				// Remember the chartop if this is the "a" character
+				if (i == 'a') mFont.CharTop = character.CharTop;
 
 				// Add the character to the character array
 				mCharacters.Add(character);
@@ -167,6 +177,10 @@ namespace Woopsi.Bmp2Font.PackedFonts
 				// If we found data, this is the last character so far to contain it
 				if (gotData) mLastChar = i;
 			}
+
+			// Ensure we have a valid chartop - use the font height if we don't have one.
+			// This can only arise if there is no 'a' in the font
+			if (mFont.CharTop == 0) mFont.CharTop = mFont.Height;
 		}
 
 		/// <summary>
@@ -450,7 +464,8 @@ namespace Woopsi.Bmp2Font.PackedFonts
 			mOutputCPP.Append(String.Format("\t{0}_width,\n", mFont.ClassName));
 			mOutputCPP.Append(String.Format("\t{0},\n", mFont.Height));
 			mOutputCPP.Append(String.Format("\t{0},\n", mSpaceWidth));
-			mOutputCPP.Append(String.Format("\t{0}", mMaximumObservedWidth));
+			mOutputCPP.Append(String.Format("\t{0},\n", mMaximumObservedWidth));
+			mOutputCPP.Append(String.Format("\t{0}\n", mFont.CharTop));
 			mOutputCPP.Append(") {\n");
 			mOutputCPP.Append("\tif (fixedWidth) setFontWidth(fixedWidth);\n");
 			mOutputCPP.Append("};\n");

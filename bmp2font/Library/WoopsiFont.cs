@@ -50,6 +50,15 @@ namespace Woopsi.Bmp2Font
 		}
 
 		/// <summary>
+		/// Height of font minus the number of blank pixels under "a".
+		/// </summary>
+		public int CharTop
+		{
+			get;
+			set;
+		}
+
+		/// <summary>
 		/// The complete .h file content.
 		/// </summary>
 		public string HeaderContent
