@@ -464,8 +464,8 @@ namespace Bmp2Font.Library.PackedFonts
 			mOutputCPP.Append(String.Format("\t{0}_width,\n", mFont.ClassName));
 			mOutputCPP.Append(String.Format("\t{0},\n", mFont.Height));
 			mOutputCPP.Append(String.Format("\t{0},\n", mSpaceWidth));
-			mOutputCPP.Append(String.Format("\t{0},\n", mMaximumObservedWidth));
-			mOutputCPP.Append(String.Format("\t{0}\n", mFont.CharTop));
+			mOutputCPP.Append(String.Format("\t{0},\n", mFont.CharTop));
+			mOutputCPP.Append(String.Format("\t{0}\n", mMaximumObservedWidth));
 			mOutputCPP.Append(") {\n");
 			mOutputCPP.Append("\tif (fixedWidth) setFontWidth(fixedWidth);\n");
 			mOutputCPP.Append("};\n");
