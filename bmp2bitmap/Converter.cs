@@ -3,18 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.IO;
+using PrettyConsole.Library;
 
 namespace Bmp2Bitmap
 {
 	class Converter
 	{
-		#region Constants
-
-		const string APP_VERSION = "V1.0";
-		const string APP_NAME = "bmp2bitmap";
-
-		#endregion
-
 		#region Members
 
 		string mFileNameIn = "";
@@ -28,14 +22,27 @@ namespace Bmp2Bitmap
 
 		#endregion
 
+		#region Properties
+
+		private ConsolePrinter Helper { get; set; }
+
+		#endregion
+
 		/// <summary>
 		/// Convert the font.
 		/// </summary>
 		/// <param name="args">Command line arguments</param>
 		public void Convert(string[] args)
 		{
-			// Output title
-			WriteTitle();
+			Helper = new ConsolePrinter();
+
+			Helper.Name = "Bmp2Bitmap";
+			Helper.Description = "Converts a BMP image into a bitmap class for use with Woopsi.";
+			Helper.Version = "V1.2";
+			Helper.AddArgument(new Argument("INFILE", "string", "Path and filename of the BMP file to convert", false));
+			Helper.AddArgument(new Argument("CLASSNAME", "string", "Name of the resultant bitmap class", false));
+
+			Console.WriteLine(String.Format("{0}\n", Helper.Title));
 
 			// Fetch arguments
 			ParseArgs(args);
@@ -178,15 +185,6 @@ namespace Bmp2Bitmap
 		}
 
 		/// <summary>
-		/// Write the program's title to the console.
-		/// </summary>
-		void WriteTitle()
-		{
-			Console.WriteLine(String.Format("{0} {1}", APP_NAME, APP_VERSION));
-			Console.WriteLine("");
-		}
-
-		/// <summary>
 		/// Validate the command line arguments.
 		/// </summary>
 		/// <returns>True if the arguments are valid; false if not</returns>
@@ -226,7 +224,7 @@ namespace Bmp2Bitmap
 								break;
 							case "/?":
 								// Help
-								PrintHelp();
+								Console.WriteLine(Helper.HelpText);
 								break;
 						}
 					}
@@ -236,19 +234,6 @@ namespace Bmp2Bitmap
 			{
 				Error("Unable to parse arguments");
 			}
-		}
-
-		/// <summary>
-		/// Print the help text.
-		/// </summary>
-		void PrintHelp()
-		{
-			Console.WriteLine("Converts a BMP image into a bitmap class for use with Woopsi.");
-			Console.WriteLine("");
-			Console.WriteLine("bmp2bitmap /INFILE string /CLASSNAME string");
-			Console.WriteLine("");
-			Console.WriteLine("/INFILE        Path and filename of the BMP file to convert");
-			Console.WriteLine("/CLASSNAME     Name of the resultant bitmap class");
 		}
 
 		/// <summary>

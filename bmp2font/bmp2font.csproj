@@ -70,6 +70,10 @@
       <Project>{895AF2E6-0671-4405-9CAD-E7D32A9EA8A2}</Project>
       <Name>Bmp2Font.Library</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConsoleHelper.Library\PrettyConsole.Library.csproj">
+      <Project>{B110D180-40FE-48B9-A88B-E23F312B7C46}</Project>
+      <Name>PrettyConsole.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

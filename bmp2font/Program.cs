@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Drawing;
 using Bmp2Font.Library;
+using PrettyConsole.Library;
 
 namespace Bmp2FontApp
 {
@@ -11,8 +12,6 @@ namespace Bmp2FontApp
 	{
 		#region Constants
 
-		const string APP_VERSION = "V1.1";
-		const string APP_NAME = "bmp2font";
 		const int CHARS_PER_ROW = 32;
 		const int ROWS_PER_FONT = 8;
 
@@ -27,9 +26,15 @@ namespace Bmp2FontApp
 		static string mClassName = "";
 		static string mBitmapName = "";
 		static Bitmap mBitmap = null;
-		static string mFontType = "";
+		static string mFontType = "packedfont1";
 		static int mFontWidth = -1;
 		static int mFontHeight = -1;
+
+		#endregion
+
+		#region Properties
+
+		private static ConsolePrinter Helper { get; set; }
 
 		#endregion
 
@@ -41,8 +46,33 @@ namespace Bmp2FontApp
 		/// <param name="args">Command line arguments</param>
 		static void Main(string[] args)
 		{
-			// Output title
-			WriteTitle();
+			Helper = new ConsolePrinter();
+
+			Helper.Name = "Bmp2Font";
+			Helper.Description = "Converts a BMP font image into a bit-packed font class for use with Woopsi.";
+			Helper.Version = "V1.2";
+			Helper.AddArgument(new Argument("INFILE", "string", "Path and filename of the BMP file to convert", false));
+			Helper.AddArgument(new Argument("CLASSNAME", "string", "Name of the resultant font class", false));
+
+			Argument arg = new Argument("FONTTYPE", "string", "Type of font to produce.  Options are:", true);
+			arg.AddOption("packedfont1", "Monochrome packed proportional font");
+			arg.AddOption("packedfont16", "16-bit packed proportional font");
+
+			Helper.AddArgument(arg);
+
+			Helper.AddArgument(new Argument("WIDTH", "int", "Width of a single character in the font", true));
+			Helper.AddArgument(new Argument("HEIGHT", "int", "Height of a single character in the font", true));
+			Helper.AddArgument(new Argument("R", "int", "Red component of the background colour", true));
+			Helper.AddArgument(new Argument("G", "int", "Green component of the background colour", true));
+			Helper.AddArgument(new Argument("B", "int", "Blue component of the background colour", true));
+
+			Helper.AddParagraph(@"WIDTH and HEIGHT represent the width and height of a single character in the font.
+Fonts must be fixed width.  If WIDTH and HEIGHT are not specified, they will be calculated from the dimensions of the
+bitmap.  In that case, the bitmap must be a multiple of 32 wide (32 chars per line) and a multiple of 8 high
+(32 * 8 = 256,the number of chars in a font).");
+	
+			Helper.AddParagraph(@"If the RGB background colour is not specified, it is automatically determined from
+the colour of the top-left pixel.  If this pixel is not part of the background, the resultant font class will be corrupt.");
 
 			// Fetch arguments
 			if (!ParseArgs(args)) return;
@@ -65,15 +95,6 @@ namespace Bmp2FontApp
 			{
 				Error("Unable to parse and pack data");
 			}
-		}
-
-		/// <summary>
-		/// Write the program's title to the console.
-		/// </summary>
-		static void WriteTitle()
-		{
-			Console.WriteLine(String.Format("{0} {1}", APP_NAME, APP_VERSION));
-			Console.WriteLine("");
 		}
 
 		/// <summary>
@@ -141,38 +162,6 @@ namespace Bmp2FontApp
 			Console.WriteLine(String.Format("Error: {0}", msg));
 		}
 
-		static void PrintHelp()
-		{
-			Console.WriteLine("Converts a BMP font image into a bit-packed monochrome font class");
-			Console.WriteLine("for use with Woopsi.");
-			Console.WriteLine("");
-			Console.WriteLine("bmp2font /INFILE string /CLASSNAME string /FONTTYPE string");
-			Console.WriteLine("         [/WIDTH int] [/HEIGHT int] [/R int] [/G int] [/B int]");
-			Console.WriteLine("");
-			Console.WriteLine("/INFILE        Path and filename of the BMP file to convert");
-			Console.WriteLine("/CLASSNAME     Name of the resultant font class");
-			Console.WriteLine("/FONTTYPE      Type of font to produce.  Options are:");
-			Console.WriteLine("");
-			Console.WriteLine("                 packedfont1  - Monochrome packed proportional font");
-			Console.WriteLine("                 packedfont16 - 16-bit packed proportional font");
-			Console.WriteLine("");
-			Console.WriteLine("/WIDTH         Width of a single character in the font");
-			Console.WriteLine("/HEIGHT        Height of a single character in the font");
-			Console.WriteLine("/R             Red component of the background colour");
-			Console.WriteLine("/G             Green component of the background colour");
-			Console.WriteLine("/B             Blue component of the background colour");
-			Console.WriteLine("");
-			Console.WriteLine("WIDTH and HEIGHT represent the width and height of a single character");
-			Console.WriteLine("in the font.  Fonts must be fixed width.  If WIDTH and HEIGHT are not");
-			Console.WriteLine("specified, they will be calculated from the dimensions of the bitmap.");
-			Console.WriteLine("In that case, the bitmap must be a multiple of 32 wide (32 chars per line)");
-			Console.WriteLine("and a multiple of 8 high (32 * 8 = 256, the number of chars in a font)");
-			Console.WriteLine("");
-			Console.WriteLine("If the RGB background colour is not specified, it is automatically");
-			Console.WriteLine("determined from the colour of the top-left pixel.  If this pixel is not");
-			Console.WriteLine("part of the background, the resultant font class will be corrupt.");
-		}
-
 		/// <summary>
 		/// Parse the command line arguments
 		/// </summary>
@@ -226,7 +215,7 @@ namespace Bmp2FontApp
 								break;
 							case "/?":
 								// Help
-								PrintHelp();
+								Console.WriteLine(Helper.HelpText);
 								break;
 						}
 					}
@@ -235,8 +224,7 @@ namespace Bmp2FontApp
 				// Validate input
 				if ((mFileNameIn != "") &&
 					(mClassName != "") &&
-					(mBitmapName != "") &&
-					(mFontType != ""))
+					(mBitmapName != ""))
 				{
 					return true;
 				}

@@ -6,6 +6,7 @@ using System.IO;
 using System.Drawing.Text;
 using Font2Bmp.Library;
 using Bmp2Font.Library;
+using PrettyConsole.Library;
 
 namespace font2font
 {
@@ -13,8 +14,6 @@ namespace font2font
 	{
 		#region Constants
 
-		const string APP_VERSION = "V1.1";
-		const string APP_NAME = "font2font";
 		const int CHARS_PER_ROW = 32;
 		const int ROWS_PER_FONT = 8;
 
@@ -28,8 +27,14 @@ namespace font2font
 		static int mTextR = 0;
 		static int mTextG = 0;
 		static int mTextB = 0;
-		static string mFontType = "packedfont16";
+		static string mFontType = "packedfont1";
 		static string mOutputPath = "";
+
+		#endregion
+
+		#region Properties
+
+		private static ConsolePrinter Helper { get; set; }
 
 		#endregion
 
@@ -39,7 +44,40 @@ namespace font2font
 		/// <param name="args">Command line arguments.</param>
 		static void Main(string[] args)
 		{
-			WriteTitle();
+			Helper = new ConsolePrinter();
+
+			Helper.Name = "Font2Font";
+			Helper.Description = "Converts a Windows font to a Woopsi font.";
+			Helper.Version = "V1.2";
+			Helper.AddArgument(new Argument("FONT", "string", "Name of the Windows font to convert", false));
+			Helper.AddArgument(new Argument("SIZE", "int", "Size of the font in pixels", false));
+			Argument arg = new Argument("STYLE", "int", "Style of the font.  Options are:", true);
+			arg.AddOption("regular", "Standard font");
+			arg.AddOption("bold", "Bold font");
+			arg.AddOption("italic", "Italic font");
+
+			Helper.AddArgument(arg);
+
+			arg = new Argument("FONTTYPE", "string", "Type of font to produce.  Options are:", true);
+			arg.AddOption("packedfont1", "Monochrome packed proportional font");
+			arg.AddOption("packedfont16", "16-bit packed proportional font");
+
+			Helper.AddArgument(arg);
+
+			Helper.AddArgument(new Argument("PATH", "string", "Output path", false));
+			Helper.AddArgument(new Argument("R", "int", "Red component of the text colour", true));
+			Helper.AddArgument(new Argument("G", "int", "Green component of the text colour", true));
+			Helper.AddArgument(new Argument("B", "int", "Blue component of the text colour", true));
+			Helper.AddArgument(new Argument("LIST", "int", "Lists all available Windows font names", true));
+
+			Helper.AddParagraph("If the text colour is not specified it defaults to black.");
+			Helper.AddParagraph("If the style is not specified it defaults to regular.");
+			Helper.AddParagraph("If the path is not specified it defaults to the current path.");
+			Helper.AddParagraph("If the font type is not specified it defaults to packedfont1.");
+
+			Console.WriteLine(Helper.Title);
+
+			Console.WriteLine(Helper.HelpText);
 
 			// Fetch arguments
 			ParseArgs(args);
@@ -76,43 +114,6 @@ namespace font2font
 			{
 				Console.WriteLine(String.Format(" - {0}", item.Name));
 			}
-		}
-
-		/// <summary>
-		/// Print the help text.
-		/// </summary>
-		static void PrintHelp()
-		{
-			Console.WriteLine("Converts a Windows font to a Woopsi font.");
-			Console.WriteLine("");
-			Console.WriteLine("font2font /FONT string /SIZE int [/STYLE string] [/FONTTYPE string]");
-			Console.WriteLine("         [/PATH string] [/R int] [/G int] [/B int]");
-			Console.WriteLine("         [/LIST]");
-			Console.WriteLine("");
-			Console.WriteLine("/FONT          Name of the Windows font to convert");
-			Console.WriteLine("/SIZE          Size of the font in pixels");
-			Console.WriteLine("/STYLE         Style of the font.  Options are:");
-			Console.WriteLine("");
-			Console.WriteLine("                 regular  - Standard font");
-			Console.WriteLine("                 bold     - Bold font");
-			Console.WriteLine("                 italic   - Italic font");
-			Console.WriteLine("");
-			Console.WriteLine("/FONTTYPE      Type of font to produce.  Options are:");
-			Console.WriteLine("");
-			Console.WriteLine("                 packedfont1  - Monochrome packed proportional font");
-			Console.WriteLine("                 packedfont16 - 16-bit packed proportional font");
-			Console.WriteLine("");
-			Console.WriteLine("/PATH          Output path");
-			Console.WriteLine("");
-			Console.WriteLine("/R             Red component of the text colour");
-			Console.WriteLine("/G             Green component of the text colour");
-			Console.WriteLine("/B             Blue component of the text colour");
-			Console.WriteLine("");
-			Console.WriteLine("/LIST          Lists all available Windows font names");
-			Console.WriteLine("");
-			Console.WriteLine("If the text colour is not specified it defaults to black.");
-			Console.WriteLine("If the style is not specified it defaults to regular.");
-			Console.WriteLine("If the path is not specified it defaults to regular.");
 		}
 
 		/// <summary>
@@ -178,7 +179,7 @@ namespace font2font
 								break;
 							case "/?":
 								// Help
-								PrintHelp();
+								Console.WriteLine(Helper.HelpText);
 								Environment.Exit(0);
 								break;
 							case "/list":
@@ -233,15 +234,6 @@ namespace font2font
 			// Output files
 			WriteFile(mOutputPath + "\\" + woopsiFont.HeaderFileName, woopsiFont.HeaderContent);
 			WriteFile(mOutputPath + "\\" + woopsiFont.BodyFileName, woopsiFont.BodyContent);
-		}
-
-		/// <summary>
-		/// Write the program's title to the console.
-		/// </summary>
-		static void WriteTitle()
-		{
-			Console.WriteLine(String.Format("{0} {1}", APP_NAME, APP_VERSION));
-			Console.WriteLine("");
 		}
 
 		/// <summary>

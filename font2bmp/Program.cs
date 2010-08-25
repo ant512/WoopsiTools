@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Text;
 using System.Drawing.Text;
 using Font2Bmp.Library;
+using PrettyConsole.Library;
 
 namespace Font2BitmapApp
 {
@@ -31,6 +32,12 @@ namespace Font2BitmapApp
 
 		#endregion
 
+		#region Properties
+
+		private static ConsolePrinter Helper { get; set; }
+
+		#endregion
+
 		#region Methods
 
 		/// <summary>
@@ -39,8 +46,35 @@ namespace Font2BitmapApp
 		/// <param name="args">Command line arguments.</param>
 		static void Main(string[] args)
 		{
+			Helper = new ConsolePrinter();
+
+			Helper.Name = "Font2Bmp";
+			Helper.Description = "Converts a Windows font to a BMP file.";
+			Helper.Version = "V1.2";
+			Helper.AddArgument(new Argument("FONT", "string", "Name of the Windows font to convert", false));
+			Helper.AddArgument(new Argument("SIZE", "int", "Size of the font in pixels", false));
+
+			Argument arg = new Argument("STYLE", "int", "Style of the font.  Options are:", true);
+			arg.AddOption("regular", "Standard font");
+			arg.AddOption("bold", "Bold font");
+			arg.AddOption("italic", "Italic font");
+
+			Helper.AddArgument(arg);
+
+			Helper.AddArgument(new Argument("FILE", "int", "Output path and filename", false));
+			Helper.AddArgument(new Argument("BACKR", "int", "Red component of the background colour", true));
+			Helper.AddArgument(new Argument("BACKG", "int", "Green component of the background colour", true));
+			Helper.AddArgument(new Argument("BACKB", "int", "Blue component of the background colour", true));
+			Helper.AddArgument(new Argument("TEXTR", "int", "Red component of the text colour", true));
+			Helper.AddArgument(new Argument("TEXTG", "int", "Green component of the text colour", true));
+			Helper.AddArgument(new Argument("TEXTB", "int", "Blue component of the text colour", true));
+			Helper.AddArgument(new Argument("LIST", "int", "Lists all available Windows font names", true));
+			Helper.AddParagraph("If the background colour is not specified it defaults to white.");
+			Helper.AddParagraph("If the text colour is not specified it defaults to black.");
+			Helper.AddParagraph("If the style is not specified it defaults to regular.");
+
 			// Output title
-			WriteTitle();
+			Console.WriteLine(Helper.Title);
 
 			// Fetch arguments
 			ParseArgs(args);
@@ -58,15 +92,6 @@ namespace Font2BitmapApp
 			Console.WriteLine(String.Format("Saving bitmap to {0}...", mFileName));
 			bmp.Save(mFileName, System.Drawing.Imaging.ImageFormat.Bmp);
 			Console.WriteLine("All done!");
-		}
-
-		/// <summary>
-		/// Write the program's title to the console.
-		/// </summary>
-		static void WriteTitle()
-		{
-			Console.WriteLine(String.Format("{0} {1}", APP_NAME, APP_VERSION));
-			Console.WriteLine("");
 		}
 
 		/// <summary>
@@ -118,43 +143,6 @@ namespace Font2BitmapApp
 		{
 			Console.WriteLine(String.Format("Error: {0}", err));
 			Environment.Exit(1);
-		}
-
-		/// <summary>
-		/// Print the help text.
-		/// </summary>
-		static void PrintHelp()
-		{
-			Console.WriteLine("Converts a Windows font to a BMP file.");
-			Console.WriteLine("");
-			Console.WriteLine("font2bmp /FONT string /SIZE int [/STYLE string] /FILE string");
-			Console.WriteLine("         [/BACKR int] [/BACKG int] [/BACKB int]");
-			Console.WriteLine("         [/TEXTR int] [/TEXTG int] [/TEXTB int]");
-			Console.WriteLine("         [/LIST]");
-			Console.WriteLine("");
-			Console.WriteLine("/FONT          Name of the Windows font to convert");
-			Console.WriteLine("/SIZE          Size of the font in pixels");
-			Console.WriteLine("/STYLE         Style of the font.  Options are:");
-			Console.WriteLine("");
-			Console.WriteLine("                 regular  - Standard font");
-			Console.WriteLine("                 bold     - Bold font");
-			Console.WriteLine("                 italic   - Italic font");
-			Console.WriteLine("");
-			Console.WriteLine("/FILE          Output path and filename");
-			Console.WriteLine("");
-			Console.WriteLine("/BACKR         Red component of the background colour");
-			Console.WriteLine("/BACKG         Green component of the background colour");
-			Console.WriteLine("/BACKB         Blue component of the background colour");
-			Console.WriteLine("");
-			Console.WriteLine("/TEXTR         Red component of the text colour");
-			Console.WriteLine("/TEXTG         Green component of the text colour");
-			Console.WriteLine("/TEXTB         Blue component of the text colour");
-			Console.WriteLine("");
-			Console.WriteLine("/LIST          Lists all available Windows font names");
-			Console.WriteLine("");
-			Console.WriteLine("If the background colour is not specified it defaults to white.");
-			Console.WriteLine("If the text colour is not specified it defaults to black.");
-			Console.WriteLine("If the style is not specified it defaults to regular.");
 		}
 
 		/// <summary>
@@ -228,7 +216,7 @@ namespace Font2BitmapApp
 								break;
 							case "/?":
 								// Help
-								PrintHelp();
+								Console.WriteLine(Helper.HelpText);
 								Environment.Exit(0);
 								break;
 							case "/list":

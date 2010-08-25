@@ -50,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConsoleHelper.Library\PrettyConsole.Library.csproj">
+      <Project>{B110D180-40FE-48B9-A88B-E23F312B7C46}</Project>
+      <Name>PrettyConsole.Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\font2bmp.Library\Font2Bmp.Library.csproj">
       <Project>{1F6C64BD-58C3-4BBE-ADF1-FABCC9DA036A}</Project>
       <Name>Font2Bmp.Library</Name>
