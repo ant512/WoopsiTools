@@ -31,14 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bmp2FontLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\references\Bmp2FontLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Font2BmpLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\references\Font2BmpLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -56,6 +48,16 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bmp2font.Library\Bmp2Font.Library.csproj">
+      <Project>{895AF2E6-0671-4405-9CAD-E7D32A9EA8A2}</Project>
+      <Name>Bmp2Font.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\font2bmp.Library\Font2Bmp.Library.csproj">
+      <Project>{1F6C64BD-58C3-4BBE-ADF1-FABCC9DA036A}</Project>
+      <Name>Font2Bmp.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bmp2Bitmap", "bmp2bitmap\Bmp2Bitmap.csproj", "{62941E99-1628-45FF-9F9D-2D971C0E7E38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bmp2font", "bmp2font\bmp2font.csproj", "{0E56909C-1EBB-4E58-BA06-65C3676BBA22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bmp2Font", "bmp2font\Bmp2Font.csproj", "{0E56909C-1EBB-4E58-BA06-65C3676BBA22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bmp2font.Library", "bmp2font.Library\bmp2font.Library.csproj", "{895AF2E6-0671-4405-9CAD-E7D32A9EA8A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bmp2Font.Library", "bmp2font.Library\Bmp2Font.Library.csproj", "{895AF2E6-0671-4405-9CAD-E7D32A9EA8A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "font2bmp", "font2bmp\font2bmp.csproj", "{75F5BB0E-195D-4676-95E4-60CBA16DC673}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Font2Bmp", "font2bmp\Font2Bmp.csproj", "{75F5BB0E-195D-4676-95E4-60CBA16DC673}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "font2bmp.Library", "font2bmp.Library\font2bmp.Library.csproj", "{1F6C64BD-58C3-4BBE-ADF1-FABCC9DA036A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Font2Bmp.Library", "font2bmp.Library\Font2Bmp.Library.csproj", "{1F6C64BD-58C3-4BBE-ADF1-FABCC9DA036A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Font2Font", "font2font\Font2Font.csproj", "{A3292FA8-F1F2-4778-8AA4-B6354628CB40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{1F6C64BD-58C3-4BBE-ADF1-FABCC9DA036A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F6C64BD-58C3-4BBE-ADF1-FABCC9DA036A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F6C64BD-58C3-4BBE-ADF1-FABCC9DA036A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3292FA8-F1F2-4778-8AA4-B6354628CB40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3292FA8-F1F2-4778-8AA4-B6354628CB40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3292FA8-F1F2-4778-8AA4-B6354628CB40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3292FA8-F1F2-4778-8AA4-B6354628CB40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,8 +4,8 @@ using System.Drawing;
 using System.Text;
 using System.IO;
 using System.Drawing.Text;
-using Woopsi.Font2Bmp;
-using Woopsi.Bmp2Font;
+using Font2Bmp.Library;
+using Bmp2Font.Library;
 
 namespace font2font
 {

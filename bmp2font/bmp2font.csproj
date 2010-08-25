@@ -66,9 +66,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\bmp2font.Library\bmp2font.Library.csproj">
+    <ProjectReference Include="..\bmp2font.Library\Bmp2Font.Library.csproj">
       <Project>{895AF2E6-0671-4405-9CAD-E7D32A9EA8A2}</Project>
-      <Name>bmp2font.Library</Name>
+      <Name>Bmp2Font.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
