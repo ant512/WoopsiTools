@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Drawing;
 
-namespace Woopsi.Bmp2Font
+namespace Bmp2Font.Library
 {
 	/// <summary>
 	/// Converts fonts based on input parameters.

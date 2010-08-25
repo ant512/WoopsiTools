@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace Woopsi.Bmp2Font
+namespace Bmp2Font.Library
 {
 	/// <summary>
 	/// Container for various information that describes a Woopsi font.  The output of the conversion

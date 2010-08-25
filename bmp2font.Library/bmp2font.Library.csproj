@@ -8,8 +8,8 @@
     <ProjectGuid>{895AF2E6-0671-4405-9CAD-E7D32A9EA8A2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Woopsi.Bmp2Font</RootNamespace>
-    <AssemblyName>Bmp2FontLibrary</AssemblyName>
+    <RootNamespace>Bmp2Font.Library</RootNamespace>
+    <AssemblyName>Bmp2Font.Library</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

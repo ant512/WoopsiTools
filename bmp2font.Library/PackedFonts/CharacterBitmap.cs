@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Woopsi.Bmp2Font.PackedFonts
+namespace Bmp2Font.Library.PackedFonts
 {
 	class CharacterBitmap
 	{

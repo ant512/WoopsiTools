@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 
-namespace Woopsi.Bmp2Font.PackedFonts
+namespace Bmp2Font.Library.PackedFonts
 {
 	/// <summary>
 	/// Converter that will convert from bitmaps to PackedFont1 and PackedFont16 classes.
