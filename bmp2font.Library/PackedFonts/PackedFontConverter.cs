@@ -258,20 +258,23 @@ namespace Bmp2Font.Library.PackedFonts
 		/// </summary>
 		protected override void BuildHOutput()
 		{
-			mOutputH.Append(String.Format("#ifndef _{0}_H_\n", mFont.ClassName.ToUpper()));
-			mOutputH.Append(String.Format("#define _{0}_H_\n", mFont.ClassName.ToUpper()));
+			mOutputH.Append(String.Format("#ifndef _{0}_H_\n", mFont.ClassName.ToUpper()));					// #ifndef font file
+			mOutputH.Append(String.Format("#define _{0}_H_\n", mFont.ClassName.ToUpper()));					// #define font file
             mOutputH.Append("\n");
-            mOutputH.Append(String.Format("#include \"{0}.h\"\n", mSuperClassName.ToLower()));
+            mOutputH.Append(String.Format("#include \"{0}.h\"\n", mSuperClassName.ToLower()));				// #include superclass
             mOutputH.Append("\n");
-            mOutputH.Append("namespace WoopsiUI {\n");
-			mOutputH.Append(String.Format("\tclass {0} : public {1}", mFont.ClassName, mSuperClassName));
+            mOutputH.Append("namespace WoopsiUI {\n\n");													// namespace WoopsiUI
+			mOutputH.Append(String.Format("\t/**\n\t * {0} font.\n\t */\n", mFont.ClassName));				// Class comment
+			mOutputH.Append(String.Format("\tclass {0} : public {1}", mFont.ClassName, mSuperClassName));	// Class name
             mOutputH.Append(" {\n");
             mOutputH.Append("\tpublic:\n");
-			mOutputH.Append(String.Format("\t\t{0}(u8 fixedWidth = 0);\n", mFont.ClassName));
+			mOutputH.Append("\t\t/**\n\t\t * Constructor.\n\t\t * @param fixedWidth Set to 0 for ");		// Constructor comment
+			mOutputH.Append("proportional or 1 for fixed width.\n\t\t */\n");
+			mOutputH.Append(String.Format("\t\t{0}(u8 fixedWidth = 0);\n", mFont.ClassName));				// Constructor
             mOutputH.Append("\t};\n");
             mOutputH.Append("}\n");
             mOutputH.Append("\n");
-            mOutputH.Append("#endif\n");
+            mOutputH.Append("#endif\n");																	// #endif
 		}
 
 		/// <summary>
