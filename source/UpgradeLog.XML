@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="WoopsiTools">
+</Property><Property Name="Solution File" Value="D:\Work\Mercurial\BitBucket\WoopsiTools\source\WoopsiTools.sln">
+</Property><Property Name="Date" Value="29 October 2010">
+</Property><Property Name="Time" Value="15:17">
+</Property></Properties><Event ErrorLevel="0" Project="Bmp2Bitmap" Source="bmp2bitmap\Bmp2Bitmap.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Bmp2Bitmap" Source="bmp2bitmap\Bmp2Bitmap.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Bmp2Font" Source="bmp2font\Bmp2Font.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Bmp2Font" Source="bmp2font\Bmp2Font.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Bmp2Font.Library" Source="bmp2font.Library\Bmp2Font.Library.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Bmp2Font.Library" Source="bmp2font.Library\Bmp2Font.Library.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Font2Bmp" Source="font2bmp\Font2Bmp.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Font2Bmp" Source="font2bmp\Font2Bmp.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Font2Bmp.Library" Source="font2bmp.Library\Font2Bmp.Library.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Font2Bmp.Library" Source="font2bmp.Library\Font2Bmp.Library.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Font2Font" Source="font2font\Font2Font.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Font2Font" Source="font2font\Font2Font.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PrettyConsole.Library" Source="ConsoleHelper.Library\PrettyConsole.Library.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PrettyConsole.Library" Source="ConsoleHelper.Library\PrettyConsole.Library.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="WoopsiTools.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="WoopsiTools.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Bmp2Bitmap" Source="bmp2bitmap\Bmp2Bitmap.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Bmp2Font" Source="bmp2font\Bmp2Font.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Bmp2Font.Library" Source="bmp2font.Library\Bmp2Font.Library.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Font2Bmp" Source="font2bmp\Font2Bmp.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Font2Bmp.Library" Source="font2bmp.Library\Font2Bmp.Library.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Font2Font" Source="font2font\Font2Font.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="PrettyConsole.Library" Source="ConsoleHelper.Library\PrettyConsole.Library.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
