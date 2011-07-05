@@ -109,7 +109,7 @@ namespace Bmp2Bitmap
 			mOutputCPP.Append("\n};\n\n");
 
 			// Append font constructor
-			mOutputCPP.Append(String.Format("{0}::{0}() : BitmapWrapper({1}_Bitmap, {2}, {3})",
+			mOutputCPP.Append(String.Format("{0}::{0}() : WoopsiGfx::BitmapWrapper({1}_Bitmap, {2}, {3})",
 				mClassName,
 				mClassName.ToLower(),
 				mBitmap.Width.ToString(),
@@ -118,12 +118,11 @@ namespace Bmp2Bitmap
 			mOutputCPP.Append(" { };");
 
 			// Insert opening data in reverse order
+			mOutputCPP.Insert(0, "\n");
 			mOutputCPP.Insert(0, values.ToString());
 			mOutputCPP.Insert(0, "_Bitmap[");
 			mOutputCPP.Insert(0, mClassName.ToLower());
 			mOutputCPP.Insert(0, "static const u16 ");
-			mOutputCPP.Insert(0, "\n");
-			mOutputCPP.Insert(0, "using namespace WoopsiUI;\n");
 			mOutputCPP.Insert(0, "\n");
 			mOutputCPP.Insert(0, String.Format("#include \"{0}\"\n", mFileNameOutH));
 			mOutputCPP.Insert(0, "#include <nds.h>\n");
@@ -139,15 +138,13 @@ namespace Bmp2Bitmap
 			mOutputH.Append(String.Format("#ifndef _{0}_H_\n", mClassName.ToUpper()));
 			mOutputH.Append(String.Format("#define _{0}_H_\n", mClassName.ToUpper()));
 			mOutputH.Append("\n");
-			mOutputH.Append("#include \"bitmapwrapper.h\"\n");
+			mOutputH.Append("#include <bitmapwrapper.h>\n");
 			mOutputH.Append("\n");
-			mOutputH.Append("namespace WoopsiUI {\n");
-			mOutputH.Append(String.Format("\tclass {0} : public BitmapWrapper", mClassName));
+			mOutputH.Append(String.Format("class {0} : public WoopsiGfx::BitmapWrapper", mClassName));
 			mOutputH.Append(" {\n");
-			mOutputH.Append("\tpublic:\n");
-			mOutputH.Append(String.Format("\t\t{0}();\n", mClassName));
-			mOutputH.Append("\t};\n");
-			mOutputH.Append("}\n");
+			mOutputH.Append("public:\n");
+			mOutputH.Append(String.Format("\t{0}();\n", mClassName));
+			mOutputH.Append("};\n");
 			mOutputH.Append("\n");
 			mOutputH.Append("#endif\n");
 		}
