@@ -162,7 +162,9 @@ namespace Font2Bmp.Library
 			{
 				for (int y = 0; y < bmp.Height; ++y)
 				{
-					if (bmp.GetPixel(x, y).Equals(colour))
+					Color px = bmp.GetPixel(x, y);
+
+					if (px.A == colour.A && px.B == colour.B && px.G == colour.G && px.R == colour.R)
 					{
 						if (left > x) left = x;
 						if (top > y) top = y;
