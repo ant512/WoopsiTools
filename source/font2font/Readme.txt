@@ -69,11 +69,11 @@ Requirements
 Links
 -----
 
- - http://ant.simianzombie.com                    - My main site
- - http://www.sourceforge.net/projects/woopsi     - Woopsi SourceForge page
+ - http://simianzombie.com                    - My main site
+ - http://bitbucket.org/ant512/woopsi         - Bitbucket page
 
 
 Email
 -----
 
-  Contact me at spam_mail250@yahoo.com.
+  Contact me at ant@simianzombie.com.
